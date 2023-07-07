@@ -26,6 +26,30 @@
     repo: https://github.com/ansible/ansible-examples.git
     dest: /home/ubuntu/kube-deploy
 
+- name: Execute hostname command in remote shell
+  shell: hostname
+  register: displaylist
+
+- name: show displaylist
+  debug:
+    var: "{{displaylist.stdout_lines}}"
+
+- name: Execute ls command in remote shell
+  shell: ls
+  register: displaylist
+
+- name: show displaylist
+  debug:
+    var: "{{displaylist.stdout_lines}}"
+
+- name: Execute pwd command in remote shell
+  shell: pwd
+  register: displaylist
+
+- name: show displaylist
+  debug:
+    var: "{{displaylist.stdout_lines}}"
+
 # - name: Replace a image with laltest iamge
 #   replace:
 #     path: k8s/fask-app.yml
