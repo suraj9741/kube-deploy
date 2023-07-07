@@ -49,7 +49,7 @@
     msg: "{{displaylist.stdout_lines}}"
 
 - name: Execute pwd command in remote shell
-  shell: "helm upgrade fask-app kube-deploy/mychart/ --set image.tag={{tag}}"
+  shell: "helm upgrade fask-app kube-deploy/mychart/ --set image.tag={{ tag }}"
   register: displaylist
 
 - name: show displaylist
