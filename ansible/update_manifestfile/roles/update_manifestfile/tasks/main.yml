@@ -22,8 +22,8 @@
     password: "{{ password }}"
 
 - name: Clone a repo with separate git directory
-  ansible.builtin.git:
-    repo: https://github.com/ansible/ansible-examples.git
+  git:
+    repo: https://github.com/suraj9741/kube-deploy.git
     dest: /home/ubuntu/kube-deploy
 
 - name: Execute hostname command in remote shell
@@ -35,7 +35,7 @@
     msg: "{{displaylist.stdout_lines}}"
 
 - name: Execute ls command in remote shell
-  shell: ls
+  shell: ls kube-deploy
   register: displaylist
 
 - name: show displaylist
