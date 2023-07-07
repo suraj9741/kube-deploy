@@ -55,3 +55,14 @@
 - name: show displaylist
   debug:
     msg: "{{displaylist.stdout_lines}}"
+
+- name: HTTPS | push all changes.
+  git_acp:
+    user: suraj9741
+    token: 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
+    path: kube-deploy
+    branch: main
+    comment: Add all the thinghs.
+    add: [ "." ]
+    mode: https
+    url: "https://github.com/suraj9741/kube-deploy.git"
