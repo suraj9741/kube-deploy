@@ -1,0 +1,39 @@
+---
+- name: Install required system packages
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python3-pip
+      - virtualenv
+      - python3-setuptools
+    state: latest
+    update_cache: true
+
+- name: Install Docker Module for Python
+  pip:
+    name: docker
+
+- name: Docker login 
+  community.docker.docker_login:
+    username: "{{ username }}"
+    password: "{{ password }}"
+
+- name: Copy k8s manifest file 
+  copy:
+    src: ../../k8s
+    dest: .
+
+- name: Replace a image with laltest iamge
+  replace:
+    path: k8s/fask-app.yml
+    regexp: '(?<= image: )(.*)$'
+    replace: 'suraj9741/koko:{{ tag }}'
+
+# - name: Replace old hostname with new hostname (requires Ansible >= 2.4)
+#   ansible.builtin.replace:
+#     path: /etc/hosts
+#     regexp: '(\s+)old\.host\.name(\s+.*)?$'
+#     replace: '\1new.host.name\2'
