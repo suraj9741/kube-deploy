@@ -34,30 +34,24 @@
   debug:
     msg: "{{displaylist.stdout_lines}}"
 
-- name: Execute ls command in remote shell
-  shell: ls kube-deploy
+- name: Execute pwd command in remote shell
+  shell: cat kube-deploy/k8s/fask-app.yml
   register: displaylist
 
 - name: show displaylist
   debug:
     msg: "{{displaylist.stdout_lines}}"
+
+- name: Replace a image with laltest iamge
+  replace:
+    path: kube-deploy/k8s/fask-app.yml
+    regexp: '(?<= image: )(.*)$'
+    replace: 'suraj9741/koko:{{ tag }}'
 
 - name: Execute pwd command in remote shell
-  shell: pwd
+  shell: cat kube-deploy/k8s/fask-app.yml
   register: displaylist
 
 - name: show displaylist
   debug:
     msg: "{{displaylist.stdout_lines}}"
-
-# - name: Replace a image with laltest iamge
-#   replace:
-#     path: k8s/fask-app.yml
-#     regexp: '(?<= image: )(.*)$'
-#     replace: 'suraj9741/koko:{{ tag }}'
-
-# - name: Replace old hostname with new hostname (requires Ansible >= 2.4)
-#   ansible.builtin.replace:
-#     path: /etc/hosts
-#     regexp: '(\s+)old\.host\.name(\s+.*)?$'
-#     replace: '\1new.host.name\2'
