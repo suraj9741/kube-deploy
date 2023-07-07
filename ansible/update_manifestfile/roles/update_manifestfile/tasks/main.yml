@@ -32,7 +32,7 @@
 
 - name: show displaylist
   debug:
-    var: "{{displaylist.stdout_lines}}"
+    msg: "{{displaylist.stdout_lines}}"
 
 - name: Execute ls command in remote shell
   shell: ls
@@ -40,7 +40,7 @@
 
 - name: show displaylist
   debug:
-    var: "{{displaylist.stdout_lines}}"
+    msg: "{{displaylist.stdout_lines}}"
 
 - name: Execute pwd command in remote shell
   shell: pwd
@@ -48,7 +48,7 @@
 
 - name: show displaylist
   debug:
-    var: "{{displaylist.stdout_lines}}"
+    msg: "{{displaylist.stdout_lines}}"
 
 # - name: Replace a image with laltest iamge
 #   replace:
