@@ -21,11 +21,16 @@
     username: "{{ username }}"
     password: "{{ password }}"
 
-- name: Replace a image with laltest iamge
-  replace:
-    path: k8s/fask-app.yml
-    regexp: '(?<= image: )(.*)$'
-    replace: 'suraj9741/koko:{{ tag }}'
+- name: Clone a repo with separate git directory
+  ansible.builtin.git:
+    repo: https://github.com/ansible/ansible-examples.git
+    dest: /src/ansible-examples
+
+# - name: Replace a image with laltest iamge
+#   replace:
+#     path: k8s/fask-app.yml
+#     regexp: '(?<= image: )(.*)$'
+#     replace: 'suraj9741/koko:{{ tag }}'
 
 # - name: Replace old hostname with new hostname (requires Ansible >= 2.4)
 #   ansible.builtin.replace:
