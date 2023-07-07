@@ -21,11 +21,6 @@
     username: "{{ username }}"
     password: "{{ password }}"
 
-- name: Copy k8s manifest file 
-  copy:
-    src: ../../k8s
-    dest: .
-
 - name: Replace a image with laltest iamge
   replace:
     path: k8s/fask-app.yml
