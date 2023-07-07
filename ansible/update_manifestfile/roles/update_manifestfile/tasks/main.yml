@@ -26,14 +26,6 @@
     repo: https://github.com/suraj9741/kube-deploy.git
     dest: /home/ubuntu/kube-deploy
 
-- name: Execute hostname command in remote shell
-  shell: hostname
-  register: displaylist
-
-- name: show displaylist
-  debug:
-    msg: "{{displaylist.stdout_lines}}"
-
 - name: Execute pwd command in remote shell
   shell: cat kube-deploy/k8s/fask-app.yml
   register: displaylist
@@ -56,13 +48,10 @@
   debug:
     msg: "{{displaylist.stdout_lines}}"
 
-- name: HTTPS | push all changes.
-  git_acp:
-    user: suraj9741
-    token: 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
-    path: kube-deploy
-    branch: main
-    comment: Add all the thinghs.
-    add: [ "." ]
-    mode: https
-    url: "https://github.com/suraj9741/kube-deploy.git"
+- name: Execute pwd command in remote shell
+  shell: "helm upgrade fask-app kube-deploy/mychart/ --set image.tag={{tag}}"
+  register: displaylist
+
+- name: show displaylist
+  debug:
+    msg: "{{displaylist.stdout_lines}}"
