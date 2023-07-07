@@ -1,6 +1,6 @@
 # An Ansible playbook to deploy the Perfios scripts project
 
-- name: Update manifest file and push 
+- name: Update manifest and deploy kubenet application
   hosts: all
   become: true
   become_method: sudo
