@@ -24,7 +24,7 @@
 - name: Clone a repo with separate git directory
   ansible.builtin.git:
     repo: https://github.com/ansible/ansible-examples.git
-    dest: .
+    dest: /home/ubuntu/kube-deploy
 
 # - name: Replace a image with laltest iamge
 #   replace:
